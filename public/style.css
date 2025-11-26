@@ -1,75 +1,56 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #0d1117; /* tamna pozadina */
-  color: #ffffff;
-  margin: 0;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: #1f2a38; /* tamno plava/crna */
-}
-
-header h1 {
-  color: #00bfff; /* svijetlo plava */
-}
-
-header button {
-  background: #00bfff;
-  color: #0d1117;
-  border: none;
-  padding: 7px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.container {
-  padding: 20px 30px;
-}
-
-.section {
-  background: #1f2a38;
-  border-radius: 10px;
+.real-card {
+  width: 320px;
+  height: 200px;
+  border-radius: 15px;
   padding: 20px;
-  margin-bottom: 20px;
-}
-
-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
-
-form input, form select {
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #00bfff;
-  background: #0d1117;
-  color: #fff;
-  flex: 1;
-  min-width: 100px;
-}
-
-form input[type=number] { width: 120px; flex:none; }
-form button { flex:none; background:#00bfff; color:#0d1117; }
-
-ul { list-style: none; padding-left: 0; }
-li { padding: 5px 0; }
-
-.virtual-card {
-  background: linear-gradient(135deg,#00bfff,#1f2a38);
-  color: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 10px;
-  font-family: monospace;
+  color: white;
+  font-family: 'Courier New', monospace;
+  position: relative;
+  background: linear-gradient(135deg, #008cff, #020b19 60%);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  transition: 0.3s;
 }
 
+.real-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+}
+
+.card-chip {
+  width: 45px;
+  height: 35px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #d4d4d4, #8b8b8b);
+  margin-bottom: 15px;
+}
+
+.card-number {
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin: 5px 0;
+}
+
+.card-info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.card-label {
+  opacity: 0.7;
+}
+
+.card-logo {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  background: rgba(255,255,255,0.15);
+  padding: 5px 10px;
+  border-radius: 8px;
+}
