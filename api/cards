@@ -1,1 +1,21 @@
+app.post('/api/cards', ensureAuth, (req,res)=>{
+  const userCards = cards.filter(c=>c.owner===req.session.user.username);
+  if(userCards.length >= 3) return res.json({success:false,error:'Max 3 cards allowed'});
+
+  const randomCardNumber = "4" + Math.floor(100000000000000 + Math.random() * 900000000000000); // VISA-like
+  const cvv = "" + Math.floor(100 + Math.random() * 900);
+  const expiry = `12/${2028 + Math.floor(Math.random()*3)}`;
+
+  const card = { 
+    owner: req.session.user.username, 
+    cardNumber: randomCardNumber,
+    cvv,
+    expiry,
+    balance: 0
+  };
+
+  cards.push(card);
+  saveCards();
+  res.json({success:true, card});
+});
 
