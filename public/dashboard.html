@@ -13,8 +13,10 @@
   .container { padding: 20px 30px; }
   .section { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
   .flex { display: flex; gap: 20px; flex-wrap: wrap; }
-  .flex > .section { flex:1; min-width: 250px; }
-  form input { margin: 5px 5px 5px 0; padding:7px; border-radius:4px; border:1px solid #ccc; }
+  .flex > .section { flex:1; min-width:250px; }
+  form { display: flex; gap:10px; flex-wrap: wrap; align-items: center; }
+  form input { padding:7px; border-radius:4px; border:1px solid #ccc; flex:1; min-width:100px; }
+  form input[type=number] { width:100px; flex:none; }
   form button, button { padding:7px 12px; border:none; border-radius:4px; cursor:pointer; background: #007BFF; color:#fff; font-weight:bold; }
   form button:hover, button:hover { background: #0056b3; }
   ul { list-style:none; padding-left:0; }
@@ -70,7 +72,7 @@
 async function loadDashboard() {
   const r = await fetch('/api/me', { credentials: 'same-origin' });
   const user = await r.json();
-  document.getElementById('welcome').innerHTML = <strong>Welcome, ${user.username}</strong>;
+  document.getElementById('welcome').innerHTML = `<strong>Welcome, ${user.username}</strong>`;
 
   // Balance
   const usersRes = await fetch('/api/users', { credentials: 'same-origin' });
@@ -79,7 +81,7 @@ async function loadDashboard() {
     const usersList = await usersRes.json();
     const ul = document.getElementById('userList');
     ul.innerHTML='';
-    usersList.forEach(u => { const li=document.createElement('li'); li.textContent=${u.username}: $${u.balance}; ul.appendChild(li); });
+    usersList.forEach(u => { const li=document.createElement('li'); li.textContent=`${u.username}: $${u.balance}`; ul.appendChild(li); });
     const me = usersList.find(u=>u.username===user.username);
     document.getElementById('balance').textContent = me.balance;
   } else {
@@ -91,7 +93,7 @@ async function loadDashboard() {
   const cards = await cardsRes.json();
   const ulCards = document.getElementById('cardList');
   ulCards.innerHTML='';
-  cards.forEach(c => { const li=document.createElement('li'); li.textContent=${c.cardNumber} | Balance: $${c.balance}; ulCards.appendChild(li); });
+  cards.forEach(c => { const li=document.createElement('li'); li.textContent=`${c.cardNumber} | Balance: $${c.balance}`; ulCards.appendChild(li); });
 }
 
 document.getElementById('transferForm').addEventListener('submit', async e=>{
