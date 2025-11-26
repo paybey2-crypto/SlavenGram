@@ -1,1 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Transfer App — Dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      body { font-family: system-ui; padding:24px; background:#fbfdff; }
+      header { display:flex; justify-content:space-between; align-items:center; }
+      .card { background:white; padding:18px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.06); margin-top:16px; }
+      button { padding:8px 12px; border:0; background:#ef4444; color:white; border-radius:6px; cursor:pointer; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Dashboard</h1>
+      <form id="logoutForm" method="POST" action="/logout"><button type="submit">Logout</button></form>
+    </header>
 
+    <div class="card" id="welcome">Loading...</div>
+
+    <script>
+      async function init() {
+        try {
+          const r = await fetch('/api/me');
+          if (r.status === 200) {
+            const u = await r.json();
+            document.getElementById('welcome').innerHTML = '<strong>Welcome, ' + u.username + '</strong><p>This is a demo dashboard. No real transfers here.</p>';
+          } else {
+            window.location = '/';
+          }
+        } catch(e) {
+          window.location = '/';
+        }
+      }
+      init();
+    </script>
+  </body>
+</html>
