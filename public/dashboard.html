@@ -21,19 +21,17 @@
 
     <script>
       async function init() {
-        try {
-          const r = await fetch('/api/me');
-          if (r.status === 200) {
-            const u = await r.json();
-            document.getElementById('welcome').innerHTML = '<strong>Welcome, ' + u.username + '</strong><p>This is a demo dashboard. No real transfers here.</p>';
-          } else {
-            window.location = '/';
-          }
-        } catch(e) {
-          window.location = '/';
-        }
-      }
-      init();
-    </script>
-  </body>
-</html>
+  try {
+    const r = await fetch('/api/me');
+    if (r.status === 200) {
+      const u = await r.json();
+      document.getElementById('welcome').innerHTML =
+        '<strong>Welcome, ' + u.username + '</strong><p>This is a demo dashboard.</p>';
+    } else {
+      window.location = '/';
+    }
+  } catch(e) {
+    window.location = '/';
+  }
+}
+init();
