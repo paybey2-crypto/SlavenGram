@@ -2,16 +2,19 @@
   {
     "username": "admin",
     "password": "AdminPass123!",
-    "balance": 10000
+    "balance": 10000,
+    "cards": []
   },
   {
     "username": "user1",
     "password": "UserPass1!",
-    "balance": 0
+    "balance": 500,
+    "cards": []
   },
   {
     "username": "user2",
     "password": "UserPass2!",
-    "balance": 0
+    "balance": 250,
+    "cards": []
   }
 ]
