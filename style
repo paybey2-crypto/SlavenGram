@@ -1,1 +1,31 @@
+.card {
+  width: 320px;
+  height: 200px;
+  border-radius: 15px;
+  padding: 20px;
+  color: #fff;
+  font-size: 18px;
+  background: linear-gradient(135deg, #0045c7, #00b4d8);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  margin-bottom: 15px;
+}
+.card-number {
+  letter-spacing: 2px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+.card-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+.show-btn {
+  background: rgba(255,255,255,0.3);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
 
