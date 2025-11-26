@@ -14,6 +14,11 @@ app.post('/api/cards', ensureAuth, (req, res) => {
   const cardNumber = `${Math.floor(1000+Math.random()*9000)}-${Math.floor(1000+Math.random()*9000)}-${Math.floor(1000+Math.random()*9000)}-${Math.floor(1000+Math.random()*9000)}`;
   const card = { cardNumber, balance: 0 };
   user.cards.push(card);
+  const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Transfer app listening on port ${PORT}`);
+});
+
 
   fs.writeFileSync('users.json', JSON.stringify(users, null, 2));
   res.json({ success: true, card });
