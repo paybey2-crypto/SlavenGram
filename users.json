@@ -1,14 +1,17 @@
 [
   {
-    "username": "testuser",
-    "password": "Password123!"
+    "username": "admin",
+    "password": "AdminPass123!",
+    "balance": 10000
   },
   {
-    "username": "admin",
-    "password": "AdminPass456!"
+    "username": "user1",
+    "password": "UserPass1!",
+    "balance": 500
   },
   {
     "username": "user2",
-    "password": "User2Pass789!"
+    "password": "UserPass2!",
+    "balance": 250
   }
 ]
