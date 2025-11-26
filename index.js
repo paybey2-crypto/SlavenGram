@@ -16,7 +16,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'change_me',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false } // true if HTTPS
+  cookie: { secure: false, sameSite: 'lax' } // važno za fetch
 }));
 
 // Load users from JSON
