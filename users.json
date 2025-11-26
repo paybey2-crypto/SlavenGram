@@ -1,1 +1,6 @@
+[
+  { "username": "admin", "password": "admin123", "balance": 1000, "isAdmin": true },
+  { "username": "user1", "password": "pass1", "balance": 500 },
+  { "username": "user2", "password": "pass2", "balance": 300 }
+]
 
