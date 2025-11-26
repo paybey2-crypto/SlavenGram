@@ -1,7 +1,126 @@
-Welcome, username
-Your balance: $XXX
-[Send money to user form]
-[Send to IBAN form]
-Your Virtual Cards:
-[List of cards + Create new card button]
-Logout
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  h1,h2 { margin-bottom: 10px; }
+  input { margin: 5px 0; }
+  button { margin: 5px 0; }
+  .section { border: 1px solid #ccc; padding: 10px; margin-bottom: 15px; }
+</style>
+</head>
+<body>
+<h1>Dashboard</h1>
+<div id="welcome">Loading...</div>
+
+<div class="section">
+  <h2>Your balance:</h2>
+  <div id="balance">Loading...</div>
+</div>
+
+<div class="section">
+  <h2>Send money to user</h2>
+  <form id="transferForm">
+    <input type="text" name="toUsername" placeholder="Username" required>
+    <input type="number" name="amount" placeholder="Amount" required>
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+<div class="section">
+  <h2>Send to IBAN</h2>
+  <form id="ibanForm">
+    <input type="text" name="iban" placeholder="IBAN" required>
+    <input type="number" name="amount" placeholder="Amount" required>
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+<div class="section">
+  <h2>Your Virtual Cards</h2>
+  <ul id="cardList"></ul>
+  <button id="createCardBtn">Create new card</button>
+</div>
+
+<div class="section" id="adminSection" style="display:none;">
+  <h2>All Users (Admin)</h2>
+  <ul id="userList"></ul>
+</div>
+
+<form id="logoutForm" method="POST" action="/logout">
+  <button type="submit">Logout</button>
+</form>
+
+<script>
+async function loadDashboard() {
+  const r = await fetch('/api/me', { credentials: 'same-origin' });
+  if(r.status !== 200) { document.getElementById('welcome').innerHTML='Error loading user'; return; }
+  const user = await r.json();
+  document.getElementById('welcome').innerHTML = `<strong>Welcome, ${user.username}</strong>`;
+
+  // Balance
+  const balanceR = await fetch('/api/me', { credentials: 'same-origin' });
+  document.getElementById('balance').textContent = 'Loading...';
+  const balanceData = await balanceR.json();
+  const usersRes = await fetch('/api/users', { credentials: 'same-origin' });
+  if(usersRes.status===200){
+    document.getElementById('adminSection').style.display='block';
+    const usersList = await usersRes.json();
+    const ul = document.getElementById('userList');
+    ul.innerHTML='';
+    usersList.forEach(u => { const li=document.createElement('li'); li.textContent=`${u.username}: $${u.balance}`; ul.appendChild(li); });
+    const me = usersList.find(u=>u.username===user.username);
+    document.getElementById('balance').textContent = me.balance;
+  } else {
+    document.getElementById('balance').textContent = balanceData.balance || '0';
+  }
+
+  // Load cards
+  const cardsRes = await fetch('/api/cards', { credentials: 'same-origin' });
+  const cards = await cardsRes.json();
+  const ulCards = document.getElementById('cardList');
+  ulCards.innerHTML='';
+  cards.forEach(c => { const li=document.createElement('li'); li.textContent=`${c.cardNumber} | Balance: $${c.balance}`; ulCards.appendChild(li); });
+}
+
+document.getElementById('transferForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const toUsername = e.target.toUsername.value;
+  const amount = parseFloat(e.target.amount.value);
+  const res = await fetch('/api/transfer', {
+    method:'POST',
+    credentials:'same-origin',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({toUsername,amount})
+  });
+  const data = await res.json();
+  if(data.success){ alert('Transfer successful!'); loadDashboard(); } else { alert('Error: '+data.error); }
+});
+
+document.getElementById('ibanForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const iban = e.target.iban.value;
+  const amount = parseFloat(e.target.amount.value);
+  const res = await fetch('/api/iban', {
+    method:'POST',
+    credentials:'same-origin',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({iban,amount})
+  });
+  const data = await res.json();
+  if(data.success){ alert('IBAN transfer successful!'); loadDashboard(); } else { alert('Error: '+data.error); }
+});
+
+document.getElementById('createCardBtn').addEventListener('click', async ()=>{
+  const res = await fetch('/api/cards',{method:'POST',credentials:'same-origin'});
+  const data = await res.json();
+  if(data.success){ alert('Card created: '+data.card.cardNumber); loadDashboard(); }
+  else alert('Error: '+data.error);
+});
+
+loadDashboard();
+</script>
+</body>
+</html>
