@@ -14,7 +14,11 @@ app.use(express.json());
 app.use("/auth", authRoutes);
 app.use("/posts", postRoutes);
 
-app.get("/", (req, res) => res.send("SlavenGram backend radi!"));
+app.get("/", (req, res) => {
+  res.send("SlavenGram backend radi!");
+});
 
-app.listen(3000, () => console.log("Server running on 3000"));
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log("Server running on port " + port));
+
 
