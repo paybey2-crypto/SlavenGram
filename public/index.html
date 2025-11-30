@@ -1,42 +1,54 @@
 <!DOCTYPE html>
-<!-- Stvoreno CodingNepalom -->
-<html lang="en" dir="ltr">
-   <glava>
-      <meta skup znakova="utf-8">
-      <naslov>Dizajn skočnog obrasca za prijavu | CodingNepal</naslov>
-      <link rel="stilski list" href="style.css">
-      <link rel="stilski list" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-   </glava>
-   <tijelo>
-      <div klasa="centar">
-         <ulaz tip="checkbox" id="pokaži">
-         <oznaka za="pokaži" klasa="show-btn">Prikaz obrasca</oznaka>
-         <div klasa="kontejner">
-            <oznaka za="pokaži" klasa="close-btn fas fa-times" naslov="zatvoriti"></oznaka>
-            <div klasa="tekst">
-               Obrazac za prijavu
-            </div>
-            <oblik akcija="#">
-               <div klasa="podaci">
-                  <oznaka>E-mail ili telefon</oznaka>
-                  <ulaz tip="tekst" zahtijevano>
-               </div>
-               <div klasa="podaci">
-                  <oznaka>Lozinka</oznaka>
-                  <ulaz tip="lozinka" zahtijevano>
-               </div>
-               <div klasa="zaboravio-prošao">
-                  <a href="#">Zaboravili ste lozinku?</a>
-               </div>
-               <div klasa="btn">
-                  <div klasa="unutrašnjost"></div>
-                  <gumb tip="podnesi">login</gumb>
-               </div>
-               <div klasa="signup-link">
-                  Nije član? <a href="#">Prijavite se sada</a>
-               </div>
-            </oblik>
-         </div>
+<!-- Izvorni kodovi prema CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<glava>
+  <meta skup znakova="UTF-8" />
+  <meta ime="viewport" sadržaj="width=širina uređaja, početna skala=1,0" />
+  <naslov>Obrazac za prijavu u HTML i CSS | CodingNepal</naslov>
+  <link rel="stilski list" href="style.css" />
+</glava>
+<tijelo>
+  <div klasa="prijava_obrazac">
+    <!- Spremnik obrasca za prijavu -->
+    <oblik akcija="#">
+      <h3>Prijavite se sa</h3>
+      <div klasa="login_option">
+        <!-- Google gomb -->
+        <div klasa="opcija">
+          <a href="#">
+            <img src="logos/google.png" alt="Google" />
+            <raspon>Google</raspon>
+          </a>
+        </div>
+        <!-- Apple gumb -->
+        <div klasa="opcija">
+          <a href="#">
+            <img src="logos/apple.png" alt="Jabuka" />
+            <raspon>Jabuka</raspon>
+          </a>
+        </div>
       </div>
-   </tijelo>
+      <!-- Razdjelnik opcija prijave -->
+      <p klasa="separator">
+        <raspon>ili</raspon>
+      </p>
+      <!-- Email ulaz kutija -->
+      <div klasa="input_box">
+        <oznaka za="e-mail">Email</oznaka>
+        <ulaz tip="e-mail" id="e-mail" rezervirano mjesto="Unesite adresu e-pošte" zahtijevano />
+      </div>
+      <!-- Paswwrod ulazna kutija -->
+      <div klasa="input_box">
+        <div klasa="password_title">
+          <oznaka za="lozinka">Lozinka</oznaka>
+          <a href="#">Zaboravili ste lozinku?</a>
+        </div>
+        <ulaz tip="lozinka" id="lozinka" rezervirano mjesto="Unesite svoju lozinku" zahtijevano />
+      </div>
+       <!-- Gumb za prijavu -->
+      <gumb tip="podnesi">Prijavite se</gumb>
+      <p klasa="sign_up">Nemate račun? <a href="#">Prijavite se</a></p>
+    </oblik>
+  </div>
+</tijelo>
 </html>
