@@ -1,23 +1,71 @@
-<div class="box">
-<form>
-<fieldset>
-<legend>Login</legend>
-Login to complete your purchase.
-<label>Username: </label>
- 
-<label>Password: </label>
- 
-</fieldset>
-</form>
- 
-&lt; !–end of login form–&gt;
-<form>
-<fieldset>
-<legend>Register</legend>
-If you do not already have an account, please create a new account to register.
- 
-</fieldset>
-</form>
- 
-&lt; !–end of register form–&gt;</div>
-&lt; !–end of box–&gt;
+/* Obrubljeni oblik */
+oblik {
+  granica: 3px čvrsta #f1f1f1;
+}
+
+/* Ulazi pune širine */
+ulaz[tip=tekst], ulaz[tip=lozinka] {
+  širina: 100%;
+  podstava: 12px 20px;
+  margina: 8px 0;
+  prikaz: inline blok;
+  granica: 1px čvrsta #ccc;
+  veličina kutije: border-box;
+}
+
+/* Postavite stil za sve gumbe */
+gumb {
+  boja pozadine: #04AA6D;
+  boja: bijela;
+  podstava: 14px 20px;
+  margina: 8px 0;
+  granica: nijedan;
+  kursor: pokazivač;
+  širina: 100%;
+}
+
+/* Dodajte efekt lebdenja za gumbe */
+gumb: hover {
+  neprozirnost: 0.8;
+}
+
+/* Dodatni stil za gumb za otkazivanje (crveno) */
+.cancelbtn {
+  širina: auto;
+  podstava: 10px 18px;
+  boja pozadine: #f44336;
+}
+
+/* Sredite sliku avatara unutra ovaj spremnik */
+.imgcontainer {
+  poravnanje teksta: centar;
+  margina: 24px 0 12px 0;
+}
+
+/* Avatar slika */
+img.avatar {
+  širina: 40%;
+  granični radijus: 50%;
+}
+
+/* Dodajte podstavu u spremnike */
+.kontejner {
+  podstava: 16px;
+}
+
+/* Tekst "Zaboravljena lozinka" */
+span.psw {
+  plovak: desno;
+  padding-top: 16px;
+}
+
+/* Promjena stilova za raspon i gumb za otkazivanje na ekstra malim zaslonima */
+@media zaslon i (maksimalna širina: 300px) {
+  span.psw {
+    prikaz: blok;
+    plovak: nijedan;
+  }
+  .cancelbtn {
+    širina: 100%;
+  }
+}
