@@ -1,0 +1,184 @@
+{
+  "design_system": {
+    "identity": {
+      "name": "Lumina Bank",
+      "archetype": "Swiss High-Contrast + Jewel Accents",
+      "tone": "Trustworthy, Precision, Growth, Modern",
+      "principles": [
+        "Fusion over Imitation: Mix Swiss typography with Jewel-tone luxury.",
+        "Content is King: Data is the hero. Charts and numbers must be legible and beautiful.",
+        "Negative Space: Use whitespace to create a sense of exclusivity and calm.",
+        "Contrast: High contrast for accessibility and authority."
+      ]
+    },
+    "typography": {
+      "font_family": {
+        "headings": "Manrope, sans-serif",
+        "body": "Public Sans, sans-serif",
+        "mono": "JetBrains Mono, monospace"
+      },
+      "scale": {
+        "h1": "text-4xl md:text-5xl font-bold tracking-tight",
+        "h2": "text-3xl md:text-4xl font-semibold tracking-tight",
+        "h3": "text-2xl font-semibold tracking-tight",
+        "body_large": "text-lg leading-relaxed",
+        "body_default": "text-base leading-relaxed",
+        "caption": "text-sm text-muted-foreground uppercase tracking-wider"
+      },
+      "imports": [
+        "@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Public+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');"
+      ]
+    },
+    "colors": {
+      "palette": {
+        "primary": {
+          "DEFAULT": "#065F46",
+          "foreground": "#FFFFFF",
+          "description": "Deep Emerald - Trust, Wealth, Stability"
+        },
+        "secondary": {
+          "DEFAULT": "#D9F99D",
+          "foreground": "#064E3B",
+          "description": "Lime - Growth, Modernity, 'Anti-AI' accent"
+        },
+        "accent": {
+          "DEFAULT": "#10B981",
+          "foreground": "#FFFFFF",
+          "description": "Vibrant Emerald - Success actions"
+        },
+        "background": {
+          "DEFAULT": "#F8FAFC",
+          "paper": "#FFFFFF",
+          "dark": "#0F172A"
+        },
+        "foreground": {
+          "DEFAULT": "#0F172A",
+          "muted": "#64748B"
+        },
+        "border": "#E2E8F0",
+        "destructive": "#EF4444"
+      },
+      "gradients": {
+        "card_gold": "linear-gradient(135deg, #1F2937 0%, #000000 100%)",
+        "card_premium": "linear-gradient(135deg, #065F46 0%, #064E3B 100%)"
+      }
+    },
+    "spacing": {
+      "container_padding": "p-6 md:p-12",
+      "section_gap": "gap-8 md:gap-12",
+      "element_gap": "gap-4",
+      "radius": {
+        "default": "rounded-lg",
+        "card": "rounded-xl",
+        "button": "rounded-md"
+      }
+    },
+    "shadows": {
+      "card": "shadow-[0_2px_8px_rgba(0,0,0,0.08)]",
+      "hover": "shadow-[0_8px_24px_rgba(0,0,0,0.12)]",
+      "glass": "shadow-[0_8px_32px_rgba(31,38,135,0.15)]"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm font-medium transition-all active:scale-95",
+      "secondary": "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-sm font-medium transition-all active:scale-95",
+      "ghost": "hover:bg-accent/10 hover:text-accent transition-colors",
+      "outline": "border-2 border-primary/20 text-primary hover:bg-primary/5 hover:border-primary transition-colors"
+    },
+    "cards": {
+      "base": "bg-white border border-border/60 shadow-card rounded-xl p-6 transition-all hover:shadow-hover",
+      "glass": "bg-white/70 backdrop-blur-xl border border-white/40 shadow-glass rounded-xl",
+      "interactive": "cursor-pointer hover:-translate-y-1 transition-transform duration-300"
+    },
+    "inputs": {
+      "default": "h-12 bg-white border-border focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-md transition-all",
+      "label": "text-sm font-medium text-foreground/80 mb-2 block"
+    },
+    "navigation": {
+      "sidebar": "bg-white border-r border-border h-screen sticky top-0",
+      "link": "flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors",
+      "link_active": "bg-primary/10 text-primary"
+    }
+  },
+  "layouts": {
+    "dashboard_user": {
+      "type": "Bento Grid Mode A",
+      "grid_class": "grid grid-cols-1 md:grid-cols-12 gap-6",
+      "areas": {
+        "balance": "col-span-full md:col-span-8 lg:col-span-8 row-span-2",
+        "quick_send": "col-span-full md:col-span-4 lg:col-span-4 row-span-2",
+        "cards": "col-span-full md:col-span-6 lg:col-span-4 row-span-2",
+        "history": "col-span-full md:col-span-6 lg:col-span-8 row-span-2"
+      }
+    },
+    "dashboard_admin": {
+      "type": "Control Room Grid Mode B",
+      "grid_class": "grid grid-cols-1 md:grid-cols-4 gap-4",
+      "areas": {
+        "stats": "col-span-1",
+        "main_table": "col-span-full md:col-span-3 row-span-2",
+        "sidebar_list": "col-span-1 row-span-2"
+      }
+    }
+  },
+  "assets": {
+    "images": {
+      "login_hero": {
+        "url": "https://images.unsplash.com/photo-1759004673712-ae50bfd2e4d7?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Modern minimalist white architecture",
+        "usage": "Login page split layout hero image"
+      },
+      "card_bg_gold": {
+        "url": "https://images.unsplash.com/photo-1761437855740-c894da924d79?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Abstract gold waves",
+        "usage": "Premium Virtual Card Background"
+      },
+      "card_bg_dark": {
+        "url": "https://images.unsplash.com/photo-1760902419069-466f6f82c8b2?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Geometric dark texture",
+        "usage": "Standard Virtual Card Background"
+      },
+      "user_avatar_1": {
+        "url": "https://images.unsplash.com/photo-1659353221237-6a1cfb73fd90?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Professional man in suit",
+        "usage": "Dashboard user profile"
+      },
+      "user_avatar_2": {
+        "url": "https://images.unsplash.com/photo-1659353220597-71b8c6a56259?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Professional person in suit",
+        "usage": "Transaction history avatar"
+      }
+    },
+    "icons": {
+      "library": "lucide-react",
+      "style": "Stroke width 1.5px, size 20px or 24px"
+    }
+  },
+  "instructions_to_main_agent": {
+    "general": [
+      "Implement the 'Swiss High-Contrast' theme. Use whitespace aggressively.",
+      "Do NOT use gradients for main backgrounds. Use them ONLY for the Virtual Cards.",
+      "Ensure all interactive elements have `data-testid` attributes.",
+      "Use `sonner` for all toast notifications.",
+      "Use `lucide-react` for icons.",
+      "Follow the 'Bento Grid' layouts defined in the `layouts` section.",
+      "For the 'Send Money' flow, use a step-by-step wizard approach to reduce cognitive load.",
+      "Admin panel should be denser than the User Dashboard. Use smaller text and tighter padding."
+    ],
+    "specific_pages": {
+      "login": "Split screen. Left: Login Form (Clean, Minimal). Right: `login_hero` image with a dark overlay and a quote about financial freedom.",
+      "user_dashboard": "Hero section is the 'Total Balance' card. Use the 'card_bg_dark' as a subtle texture for the balance card.",
+      "virtual_cards": "Display cards using the 'Glassmorphism' style. Allow users to 'flip' the card to see CVV (simulated).",
+      "admin_users": "Use a Shadcn Table. Add a 'Status' badge (Green for Active, Red for Blocked)."
+    },
+    "universal_guidelines": [
+      "Don't make generic centered layouts.",
+      "Create depth through layered design elements.",
+      "Use glass-morphism effects with backdrop filters.",
+      "NEVER use AI assistant Emoji characters.",
+      "Every interaction needs micro-animations.",
+      "Use 2-3x more spacing than feels comfortable."
+    ]
+  }
+}
